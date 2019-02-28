@@ -1,0 +1,8 @@
+set.seed(2000)
+f1<-gl(3,24,72,labels = c("G1","G2","G3"))#factor fijo (genotios)
+#Se tienen 36 altitutes, de las cuales se seleccionara unamustra aleatoria de tres altitudes
+f2<-gl(3,8,72,labels = c("2400","2620","2110"))#Factor aleatorio(ambientes)
+altitud1<-sample(altitud,3,replace=F);altitud1#Tomar una muestra aleatoria
+rendimiento<-sort(rnorm(72,3.5,0.5))
+df<-data.frame(genotipo=f1,ambiente=altitud1,rendimiento);df
+medias<-tapply(df$rendimiento, list(df$genotipo,df$ambiente),mean);medias
